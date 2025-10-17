@@ -573,7 +573,7 @@
 <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
 <script>
   function openIssue(fileName) {
-    var book = ePub("epub/" + fileName);
+    var book = ePub("/epub/" + fileName);
     var rendition = book.renderTo("viewer", {
       width: "100%",
       height: "100%"
