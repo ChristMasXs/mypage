@@ -573,11 +573,25 @@
 <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
 <script>
   function openIssue(fileName) {
-    var book = ePub("epub/" + fileName);
-    var rendition = book.renderTo("viewer", {
-      width: "100%",
-      height: "100%"
-    });
-    rendition.display();
+    // mailharu 폴더 기준 절대경로
+    const basePath = '/mypage/epub/';
+
+    fetch(basePath + fileName)
+      .then(res => {
+        if (!res.ok) throw new Error("EPUB 파일을 찾을 수 없습니다: " + fileName);
+        return res.blob();
+      })
+      .then(blob => {
+        const book = ePub(blob);
+        const rendition = book.renderTo("viewer", {
+          width: "100%",
+          height: "100%"
+        });
+        rendition.display();
+      })
+      .catch(err => {
+        alert("EPUB 열람 실패: " + err.message);
+        console.error(err);
+      });
   }
 </script>
