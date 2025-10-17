@@ -131,7 +131,7 @@
 
             // **[핵심] EPUB 파일 경로를 로컬 서버 경로와 결합**
             // http://localhost:8000/epub/1월호.epub 와 같은 형태로 만듭니다.
-            let fullEpubUrl = window.location.origin + epubFilePath;
+            let fullEpubUrl = 'https://christmasxs.github.io/mypage/' + epubFilePath.replace(/^\/+/, '');
 
             // 뷰어 프레임에 로드 시도
             // 1. 구글 뷰어 시도 (보편적인 EPUB 리더기가 없을 때 사용)
